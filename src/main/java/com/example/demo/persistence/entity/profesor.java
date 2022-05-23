@@ -16,6 +16,7 @@ public class profesor {
     private Long id;
 
     @Getter @Setter
+
     private String nombre;
 
     @Getter @Setter

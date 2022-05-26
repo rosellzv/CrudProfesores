@@ -4,13 +4,10 @@ import com.example.demo.persistence.entity.profesor;
 import com.example.demo.service.Dto;
 import com.example.demo.service.ProfesorService;
 
-import org.springframework.data.repository.query.Param;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/profesores")
@@ -26,7 +23,6 @@ public class profesorController {
     @PostMapping
     public profesor addProfesor(@RequestBody Dto dto){
        return this.profesorService.AdicionarProfesores(dto);
-
     }
 
     @GetMapping
@@ -57,5 +53,4 @@ public class profesorController {
     public void modificar(@RequestBody Dto dto, @PathVariable("id") Long id){
         this.profesorService.modificarProfesor(dto,id);
     }
-
 }

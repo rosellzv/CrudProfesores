@@ -13,6 +13,7 @@ public class ProfesorMap implements IMapper<Dto, profesor>{
         profesor.setApellido(in.getApellido());
         profesor.setAsignatura(in.getAsignatura());
         profesor.setUniversidad(in.getUniversidad());
+        profesor.setEdad(in.getEdad());
         return profesor;
     }
 }

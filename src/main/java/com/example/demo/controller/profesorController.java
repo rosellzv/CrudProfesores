@@ -5,8 +5,10 @@ import com.example.demo.service.Dto;
 import com.example.demo.service.ProfesorService;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -15,14 +17,20 @@ import java.util.List;
 public class profesorController {
 
     private final ProfesorService profesorService;
+    public String message;
 
     public profesorController(ProfesorService profesorService) {
         this.profesorService = profesorService;
     }
 
     @PostMapping
-    public profesor addProfesor(@RequestBody Dto dto){
-       return this.profesorService.AdicionarProfesores(dto);
+    public profesor addProfesor( @RequestBody Dto dto){
+      return this.profesorService.AdicionarProfesores(dto);
+    }
+
+    @GetMapping("/message")
+    public String envioConfirmacion(){
+        return message;
     }
 
     @GetMapping
@@ -35,13 +43,13 @@ public class profesorController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<profesor> eliminarProfesor(Long id){
+    public ResponseEntity<profesor> eliminarProfesor(@PathVariable("id") Long id){
         profesor profe = this.profesorService.findxid(id);
         if(null == profe){
             return ResponseEntity.noContent().build();
         }
         this.profesorService.eliminarProfesor(id);
-        return ResponseEntity.ok(null);
+        return ResponseEntity.ok(profe);
     }
     @GetMapping("/{id}")
     public ResponseEntity<profesor> findxid(@PathVariable("id") Long id){

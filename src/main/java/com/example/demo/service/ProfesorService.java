@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 
 @Service
@@ -49,7 +48,7 @@ public class ProfesorService {
     }
 
     @Transactional
-    public profesor modificarProfesor(Dto dto,Long id){
+    public profesor modificarProfesor(Dto dto, Long id){
         profesor profesor1 = mapper.map(dto);
         profesor profe = findxid(id);
         if(null == profe){
@@ -59,6 +58,7 @@ public class ProfesorService {
         profe.setApellido(profesor1.getApellido());
         profe.setAsignatura(profesor1.getAsignatura());
         profe.setUniversidad(profesor1.getUniversidad());
+        profe.setEdad(profesor1.getEdad());
 
         return repository.save(profe);
     }

@@ -1,19 +1,24 @@
 package com.example.demo.service;
 
+import com.example.demo.persistence.entity.profesor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Data
-public class Dto {
+@Setter @Getter
+@Builder
+public class Dto extends profesor {
     private String nombre;
 
-    @Getter @Setter
     private String apellido;
 
-    @Getter @Setter
     private String asignatura;
 
-    @Getter @Setter
     private String universidad;
+
+    private Integer edad;
+
+
 }
